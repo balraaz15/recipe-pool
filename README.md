@@ -1,1 +1,10 @@
 # Recipe Pool
+
+This project uses Spoonacular API `https://spoonacular.com/food-api` and created a UI to search various available recipes provided by the API along with other features.
+
+## Setup the project
+1. Clone the project
+	`git clone git@github.com:balraaz15/recipe-pool.git`
+2. Install packages from package.json
+	`npm install`
+3. Entry Point: `src/js/index.js`
