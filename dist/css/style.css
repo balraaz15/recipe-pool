@@ -100,7 +100,7 @@ body {
 }
 
 .main .main-item {
-  height: 500px;
+  min-height: 500px;
   background: linear-gradient(0deg, #dad7d7, #fff);
   border-radius: 15px;
   position: relative;
@@ -206,6 +206,7 @@ body {
   overflow: hidden;
   background: none;
   position: absolute;
+  display: none;
 }
 .loader-search {
   left: 25%;
@@ -225,4 +226,64 @@ body {
 }
 .ldio div {
   box-sizing: content-box;
+}
+
+/* Results */
+.results-box {
+  padding: 15px 0 20px 0;
+}
+
+.result-item {
+  margin-left: 0 !important;
+  padding: 5px 5px 0 10px;
+  transition: transform 0.5s ease-in-out;
+  position: relative;
+}
+
+.result-item h6 {
+  font-weight: bold;
+  color: #4f5169;
+}
+
+.result-item:hover {
+  border-color: transparent;
+  box-shadow: 0px 2px 11px -2px #888;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-left: -2px !important;
+}
+
+.result-item::before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  z-index: 100;
+  top: 25%;
+  width: 3px;
+  height: 50%;
+  background: #735b7b;
+}
+
+.result-item:last-child {
+  border: none;
+}
+
+.result-item div:last-child p {
+  font-size: 0.9rem;
+  display: inline-block;
+  background: #add8e6;
+  padding: 3px 5px;
+  border-radius: 10px;
+}
+
+.result-item div:last-child p:last-child {
+  float: right;
+  margin-right: 15px;
+}
+
+.result-item div img {
+  max-width: 100%;
+  max-height: 90%;
+  overflow: hidden;
+  border-radius: 50%;
 }

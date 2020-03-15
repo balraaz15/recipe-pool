@@ -14,12 +14,97 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../dist/css/materia.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
   </head>
 
   <body>
     <div class="title-bar">
-      <p>Recipe Pool</p>
+      <span class="title">Recipe Pool</span>
+      <p class="motto">Hungry? Grab a recipe!</p>
+    </div>
+
+    <div class="search-bar">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-10">
+            <form class="search-recipe">
+              <input
+                placeholder="Search over 1000+ recipes ... "
+                class="search-box"
+              />
+              <button id="search"><i class="fas fa-search"></i>Search</button>
+            </form>
+          </div>
+          <div class="col-md-2 my-choice">
+            <span class="favorites"><i class="fas fa-heart"></i></span>
+            <span class="cart"><i class="fas fa-shopping-cart"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main my-5">
+      <div class="row">
+        <div class="col-md-4 main-item" id="results">
+          <span class="main-item-title">Search results</span>
+          <!-- Loader -->
+          <div class="loader-search loadingio-spinner">
+            <div class="ldio">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <!-- Search results -->
+          <div class="results-box">
+            <!-- <div class="result-item row">
+              <div class="col-md-4">
+                <img src="" alt="Chicken" />
+              </div>
+              <div class="col-md-8">
+                <h6>Chicken with Cranberries</h6>
+                <p>Servings: <span>4</span></p>
+                <p>Time to cook: <span>65 mins</span></p>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="col-md-5 main-item" id="desc">
+          <div class="loader-desc loadingio-spinner">
+            <div class="ldio">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 main-item" id="shop-list">
+          <span class="main-item-title">My Shopping List</span>
+        </div>
+      </div>
     </div>
   <script type="text/javascript" src="js/bundle.js"></script></body>
 </html>
