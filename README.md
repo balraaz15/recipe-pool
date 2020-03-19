@@ -8,3 +8,4 @@ This project uses Spoonacular API `https://spoonacular.com/food-api` and created
 2. Install packages from package.json
 	`npm install`
 3. Entry Point: `src/js/index.js`
+4. Run in development mode using Webpack dev server(WDS: Auto-reloads the page after a file is saved.): `npm run start`
