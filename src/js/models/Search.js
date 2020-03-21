@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { apiKey, corsProxy } from '../config';
 
 export default class Search {
 	constructor(query) {
@@ -6,9 +7,6 @@ export default class Search {
 	}
 
 	async getRecipes() {
-		const apiKey = 'f17a5a50930a46ee878e7608b9f48fe8';
-		const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-
 		try {
 			console.log('Getting the recipes.');
 			const result = await axios.get(`${corsProxy}https://api.spoonacular.com/recipes/search?apiKey=${apiKey}&query=${this.query}&number=10`);
