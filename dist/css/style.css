@@ -15,6 +15,8 @@ body {
 
 .title-bar .title {
   font-size: 50px;
+  color: unset;
+  text-decoration: none;
 }
 
 .title-bar .motto {
@@ -238,6 +240,8 @@ body {
   padding: 5px 5px 0 10px;
   transition: transform 0.5s ease-in-out;
   position: relative;
+  left: -15px;
+  list-style: none;
 }
 
 .result-item h6 {
@@ -262,6 +266,16 @@ body {
   width: 3px;
   height: 50%;
   background: #735b7b;
+}
+
+.result-item a {
+  display: block;
+  width: 100%;
+  color: unset;
+}
+
+.result-item a:hover {
+  text-decoration: none;
 }
 
 .result-item:last-child {
