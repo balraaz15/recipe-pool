@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>Recipe Pool || Search over 1,000,000+ recipes</title>
+    <title>Recipe Pool: Search over 1,000,000+ recipes</title>
     <link rel="stylesheet" href="css/style.css" />
     <link
       rel="stylesheet"
@@ -17,6 +17,10 @@
     <link
       href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
     />
     <script
       defer
@@ -54,34 +58,18 @@
       <div class="row">
         <div class="col-md-4 main-item" id="results">
           <span class="main-item-title">Search results</span>
-          <!-- Loader -->
-          <div class="loader-search loadingio-spinner">
-            <div class="ldio">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
           <!-- Search results -->
           <div class="results-box">
             <ul class="results-list">
-              <!-- <li class="result-item">
+              <!-- <li class="result-item active">
                 <a class="row">
                   <div class="col-md-4">
                     <img src="" alt="Chicken" />
                   </div>
                   <div class="col-md-8">
                     <h6>Chicken with Cranberries</h6>
-                    <p>Servings: <span>4</span></p>
-                    <p>65 mins</p>
+                    <p><i class="fas fa-concierge-bell"></i> 4 person(s)</p>
+                    <p><i class="fas fa-stopwatch"></i> 45 mins.</p>
                   </div>
                 </a>
               </li> -->
@@ -89,24 +77,52 @@
           </div>
         </div>
         <div class="col-md-5 main-item" id="desc">
-          <!-- Loader -->
-          <div class="loader-desc loadingio-spinner">
-            <div class="ldio">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
           <!-- Recipe -->
+          <!-- <div class="recipe">
+            <div class="recipe-img shadow"></div>
+
+            <div class="recipe-info">
+              <span class="recipe-title main-item-title"
+                >Best Baked Macaroni and Cheese and there is lots of potatoes
+                into it for the taste</span
+              >
+              <div class="row text-center">
+                <div class="col-md-4 text-primary">
+                  <p><i class="fas fa-stopwatch"></i> 45 minutes</p>
+                </div>
+                <div class="col-md-4 text-info">
+                  <p><i class="fas fa-concierge-bell"></i> 4 person(s)</p>
+                </div>
+                <div class="col-md-4 text-danger favorite">
+                  <p><i class="far fa-heart"></i> Favorite</p>
+                </div>
+              </div>
+            </div>
+            <hr class="w-75" />
+            <div class="recipe-list">
+              <form class="measurement-preference text-center">
+                <span>Preffered measurement system:</span>
+                <input
+                  type="radio"
+                  id="metric"
+                  name="measurement"
+                  value="metric"
+                  checked
+                />
+                <label for="metric">Metric</label>
+                <input type="radio" id="us" name="measurement" value="us" />
+                <label for="us">US</label><br />
+              </form>
+              <ul class="ingredients">
+                <li>
+                  <i class="fas fa-angle-double-right"></i>
+                  <span class="col-md-9">150 g of granulated sugar</span>
+                </li>
+              </ul>
+            </div>
+          </div> -->
         </div>
+        <!-- Shopping list -->
         <div class="col-md-3 main-item" id="shop-list">
           <span class="main-item-title">My Shopping List</span>
         </div>

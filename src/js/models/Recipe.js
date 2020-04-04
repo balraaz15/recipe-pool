@@ -8,8 +8,10 @@ export default class Recipe {
 
 	async getRecipe() {
 		try {
-			const recipe = await axios.get(`${corsProxy}https://api.spoonacular.com/recipes/${this.id}/ingredientWidget.json?apiKey=${apiKey}`);
-			return recipe.data.ingredients;
+			console.log('Fetching the recipe list ...');
+			const recipe = await axios.get(`${corsProxy}https://api.spoonacular.com/recipes/${this.id}/information?apiKey=${apiKey}&includeNutrition=false`);
+			return recipe.data;
+			// return recipe.data.ingredients;
 		} catch (error) {
 			alert(error);
 		}

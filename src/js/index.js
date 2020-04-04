@@ -1,7 +1,8 @@
 import Search from '../js/models/Search';
 import Recipe from '../js/models/Recipe';
-import { elements } from './views/base';
+import { elements, renderLoader, clearLoader } from './views/base';
 import * as searchView from './views/searchView';
+import * as recipeView from './views/recipeView';
 
 /** 
  * Global state of the application
@@ -9,6 +10,7 @@ import * as searchView from './views/searchView';
  * - Current recipe object
  * - Shopping list object
  * - Liked recipe object
+ * - measurement preference
  */
 const state = {};
 
@@ -18,14 +20,20 @@ const state = {};
 const searchRecipe = async () => {
 	const query = searchView.searchValue();
 	if (query) {
+		document.title = `Recipe Pool: ${query.charAt(0).toUpperCase() + query.slice(1)}`;
 		state.search = new Search(query);
-		elements.searchLoader.style.display = 'block';
 		searchView.clearResult();
-		state.recipes = await state.search.getRecipes();
-		searchView.renderResults(state.recipes);
-		elements.searchLoader.style.display = 'none';
+		renderLoader(elements.resultsBox);
+		try {
+			state.recipes = await state.search.getRecipes();
+			clearLoader();
+			searchView.renderResults(state.recipes);
+		} catch (error) {
+			alert('Something went wrong while searching the recipe...');
+			clearLoader();
+		}
+		console.log(state);
 	}
-	console.log(state);
 }
 
 elements.recipeForm.addEventListener('submit', e => {
@@ -38,18 +46,26 @@ elements.recipeForm.addEventListener('submit', e => {
  */
 const controlRecipe = async () => {
 	const id = window.location.hash.replace('#', '');
-	console.log(`Id: ${id}`);
+	localStorage.setItem('measurement', 'us');
+	state.measurement = localStorage.getItem('measurement');
 
 	if (id) {
-		elements.descLoader.style.display = 'block';
+		const search = state.recipes.find(item => item.id == id);
+		document.title = `Recipe Pool: ${search.title}`;
 		state.recipe = new Recipe(id);
+		recipeView.clearRecipe();
+		renderLoader(elements.recipeDesc);
 		state.recipeData = await state.recipe.getRecipe();
-		elements.descLoader.style.display = 'none';
+		clearLoader();
+		recipeView.renderRecipeDesc(state.recipeData);
+		recipeView.renderIngredients(state.recipeData.extendedIngredients, state.measurement);
 	}
 	console.log(state);
 }
 
-['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+window.addEventListener('hashchange', controlRecipe);
+
+// ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
 
 /**
  * Page Title

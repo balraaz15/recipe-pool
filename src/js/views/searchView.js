@@ -11,14 +11,18 @@ export const renderResults = (recipes) => {
 	recipes.map(recipe => {
 		recipeItem = document.createElement('li');
 		recipeItem.className = 'result-item';
-		recipeItem.innerHTML = `<a class="row" href="#${recipe.id}"><div class="col-md-4">
-						<img src="https://spoonacular.com/recipeImages/${recipe.id}-90x90.jpg" alt="${recipe.title}" crossorigin="anonymous" />
-					</div>
-					<div class="col-md-8">
-						<h6>${recipe.title}</h6>
-						<p><i class="fas fa-concierge-bell"></i> ${recipe.servings} person(s)</p>
-						<p><i class="fas fa-stopwatch"></i> ${recipe.readyInMinutes} mins.</p>
-					</div></a>`;
+		recipeItem.innerHTML = `
+			<a class="row" href="#${recipe.id}">
+				<div class="col-md-4">
+					<img src="https://spoonacular.com/recipeImages/${recipe.id}-90x90.jpg" alt="${recipe.title}" crossorigin="anonymous" />
+				</div>
+				<div class="col-md-8">
+					<h6>${recipe.title}</h6>
+					<p><i class="fas fa-concierge-bell"></i> ${recipe.servings} person(s)</p>
+					<p><i class="fas fa-stopwatch"></i> ${recipe.readyInMinutes} mins.</p>
+				</div>
+			</a>
+			`;
 
 		elements.resultList.insertAdjacentElement('beforeend', recipeItem);
 	});

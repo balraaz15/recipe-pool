@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  background: linear-gradient(0deg, #dad7d7, #fff);
 }
 
 /* Title bar styles */
@@ -83,12 +84,21 @@ body {
   color: #23b5ad;
 }
 
-[class*="fa-"] {
-  transition: all 0.2s ease-in-out;
+.favorite {
+  cursor: pointer;
 }
 
-[class*="fa-"]:hover {
+.search-bar [class*="fa-"],
+.favorite {
+  transition: all 0.3s ease-in-out;
+}
+
+.search-bar [class*="fa-"]:hover {
   transform: scale(1.2);
+}
+
+.favorite:hover {
+  transform: scale(1.1);
 }
 
 /* Main body */
@@ -103,7 +113,7 @@ body {
 
 .main .main-item {
   min-height: 500px;
-  background: linear-gradient(0deg, #dad7d7, #fff);
+  background: white;
   border-radius: 15px;
   position: relative;
 }
@@ -121,12 +131,12 @@ body {
   display: block;
   height: 40px;
   background: linear-gradient(90deg, #6c5b7b, #c06c84);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.18) !important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25) !important;
   border-radius: 15px;
   font-family: "Luckiest Guy", cursive;
   color: #dedacd;
   font-size: 1.2rem;
-  padding: 8px 0;
+  padding: 8px 10px;
   text-align: center;
 }
 
@@ -135,104 +145,46 @@ body {
 }
 
 /* Loader style */
-@keyframes ldio-esmb0rmbp2 {
+.loader {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto !important;
+  top: 50px;
+}
+.loader div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #e88f32 transparent transparent transparent;
+}
+.loader div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.loader div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.loader div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes loader {
   0% {
-    opacity: 1;
+    transform: rotate(0deg);
   }
   100% {
-    opacity: 0;
+    transform: rotate(360deg);
   }
-}
-.ldio div {
-  left: 94.46999999999998px;
-  top: 48.239999999999995px;
-  position: absolute;
-  animation: ldio-esmb0rmbp2 linear 0.641025641025641s infinite;
-  background: #85a2b6;
-  width: 12.059999999999999px;
-  height: 24.119999999999997px;
-  border-radius: 6.029999999999999px / 12.059999999999999px;
-  transform-origin: 6.029999999999999px 52.25999999999999px;
-}
-.ldio div {
-  background: #715b7c !important;
-}
-.ldio div:nth-child(1) {
-  transform: rotate(0deg);
-  animation-delay: -0.5827505827505828s;
-}
-.ldio div:nth-child(2) {
-  transform: rotate(32.72727272727273deg);
-  animation-delay: -0.5244755244755245s;
-}
-.ldio div:nth-child(3) {
-  transform: rotate(65.45454545454545deg);
-  animation-delay: -0.4662004662004662s;
-}
-.ldio div:nth-child(4) {
-  transform: rotate(98.18181818181819deg);
-  animation-delay: -0.40792540792540793s;
-}
-.ldio div:nth-child(5) {
-  transform: rotate(130.9090909090909deg);
-  animation-delay: -0.34965034965034963s;
-}
-.ldio div:nth-child(6) {
-  transform: rotate(163.63636363636363deg);
-  animation-delay: -0.2913752913752914s;
-}
-.ldio div:nth-child(7) {
-  transform: rotate(196.36363636363637deg);
-  animation-delay: -0.2331002331002331s;
-}
-.ldio div:nth-child(8) {
-  transform: rotate(229.0909090909091deg);
-  animation-delay: -0.17482517482517482s;
-}
-.ldio div:nth-child(9) {
-  transform: rotate(261.8181818181818deg);
-  animation-delay: -0.11655011655011654s;
-}
-.ldio div:nth-child(10) {
-  transform: rotate(294.54545454545456deg);
-  animation-delay: -0.05827505827505827s;
-}
-.ldio div:nth-child(11) {
-  transform: rotate(327.27272727272725deg);
-  animation-delay: 0s;
-}
-.loadingio-spinner {
-  width: 201px;
-  height: 201px;
-  display: inline-block;
-  overflow: hidden;
-  background: none;
-  position: absolute;
-  display: none;
-}
-.loader-search {
-  left: 25%;
-  top: 30%;
-}
-.loader-desc {
-  left: 29%;
-  top: 20%;
-}
-.ldio {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform: translateZ(0) scale(1);
-  backface-visibility: hidden;
-  transform-origin: 0 0; /* see note above */
-}
-.ldio div {
-  box-sizing: content-box;
 }
 
 /* Results */
 .results-box {
-  padding: 15px 0 20px 0;
+  padding: 15px 0 20px 0 !important;
 }
 
 .result-item {
@@ -249,6 +201,12 @@ body {
   color: #4f5169;
 }
 
+.active {
+  background: #bddfea;
+  margin-right: -15px;
+  border-right: 5px solid red;
+}
+
 .result-item:hover {
   border-color: transparent;
   box-shadow: 0px 2px 11px -2px #888;
@@ -262,9 +220,9 @@ body {
   position: absolute;
   right: 100%;
   z-index: 100;
-  top: 25%;
+  top: 20%;
   width: 3px;
-  height: 50%;
+  height: 65%;
   background: #735b7b;
 }
 
@@ -300,4 +258,57 @@ body {
   max-height: 90%;
   overflow: hidden;
   border-radius: 50%;
+}
+
+/* Recipe styles */
+.recipe-img {
+  height: 265px;
+  overflow: hidden;
+  border-radius: 15px 15px 0 0;
+  background-image: url(https://spoonacular.com/recipeImages/176226-556x370.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.recipe-title {
+  color: #333;
+  width: fit-content;
+  max-width: 90%;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #f2994a, #f2c94c);
+  height: auto;
+  font-family: cursive;
+  font-size: 17px;
+  position: relative;
+  bottom: 20px;
+}
+
+.recipe-info p {
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.recipe-info [class*="fa-"] {
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+hr {
+  height: 1px;
+  background: #705b7b;
+  margin: 5px auto !important;
+}
+
+.ingredients {
+  list-style: none;
+  column-count: 2;
+}
+
+.ingredients li img {
+  width: 15%;
+}
+
+.ingredients [class*="fa-"] {
+  font-size: 14px;
+  color: #f39c4a;
 }
