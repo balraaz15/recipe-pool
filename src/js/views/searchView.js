@@ -6,6 +6,12 @@ export const clearResult = () => {
 	elements.resultList.innerHTML = '';
 }
 
+export const highlightSelectedItem = id => {
+	const active = document.querySelector('.active');
+	if (active) active.classList.remove('active');
+	document.querySelector(`a[href="#${id}"]`).parentElement.classList.add('active');
+}
+
 export const renderResults = (recipes) => {
 	let recipeItem;
 	recipes.map(recipe => {
