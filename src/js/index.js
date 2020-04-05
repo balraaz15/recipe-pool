@@ -29,7 +29,7 @@ const searchRecipe = async () => {
 			clearLoader();
 			searchView.renderResults(state.recipes);
 		} catch (error) {
-			alert('Something went wrong while searching the recipe...');
+			alert(error);
 			clearLoader();
 		}
 		console.log(state);
@@ -46,8 +46,6 @@ elements.recipeForm.addEventListener('submit', e => {
  */
 const controlRecipe = async () => {
 	const id = window.location.hash.replace('#', '');
-	localStorage.setItem('measurement', 'us');
-	state.measurement = localStorage.getItem('measurement');
 
 	if (id) {
 		const search = state.recipes.find(item => item.id == id);
@@ -55,10 +53,15 @@ const controlRecipe = async () => {
 		state.recipe = new Recipe(id);
 		recipeView.clearRecipe();
 		renderLoader(elements.recipeDesc);
-		state.recipeData = await state.recipe.getRecipe();
-		clearLoader();
-		recipeView.renderRecipeDesc(state.recipeData);
-		recipeView.renderIngredients(state.recipeData.extendedIngredients, state.measurement);
+		if (state.search) searchView.highlightSelectedItem(id);
+		try {
+			state.recipeData = await state.recipe.getRecipe();
+			clearLoader();
+			recipeView.renderRecipeDesc(state.recipeData);
+		} catch (error) {
+			console.log(error);
+			clearLoader();
+		}
 	}
 	console.log(state);
 }
@@ -71,3 +74,11 @@ window.addEventListener('hashchange', controlRecipe);
  * Page Title
 */
 elements.title.setAttribute('href', window.origin);
+
+/**
+ * Load starter page if no search and link exists in URL
+ * TODO :: use localstorage for better UX
+ */
+window.addEventListener('load', function () {
+	if (window.location.hash && !state.search) window.location = window.origin;
+});
