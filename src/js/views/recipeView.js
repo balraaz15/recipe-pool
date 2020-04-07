@@ -34,11 +34,12 @@ export const renderRecipeDesc = (recipeItem) => {
         <ul class="ingredients">
           ${recipeItem.extendedIngredients.map(ingr => renderIngredients(ingr)).join('')}
         </ul>
+        <button class="btn-add-list"><i class="fas fa-cart-plus"></i> Add to Shopping List</button>
         <hr class="w-75" />
         <h6>Instructions:</h6>
         <div class="instructions">
           <ol class="inst-list">
-            ${recipeItem.analyzedInstructions[0].steps.map(inst => renderInstructions(inst)).join('')}
+            ${recipeItem.analyzedInstructions[0] ? recipeItem.analyzedInstructions[0].steps.map(inst => renderInstructions(inst)).join('') : 'No instructions available'}
           </ol>
         </div>
       </div>

@@ -91,22 +91,16 @@
                   <p><i class="fas fa-stopwatch"></i> 45 minutes</p>
                 </div>
                 <div class="col-md-4 text-info">
-                  <p>
-                    <i class="fas fa-concierge-bell"></i> 4 person(s)
-                    <span class="alter-servings">
-                      <i
-                        class="fas fa-plus-circle"
-                        title="Increase Servings"
-                      ></i>
-                      <i
-                        class="fas fa-minus-circle"
-                        title="Decrease Servings"
-                      ></i>
-                    </span>
-                  </p>
+                  <p><i class="fas fa-concierge-bell"></i> 4 person(s)</p>
                 </div>
                 <div class="col-md-4 text-danger favorite">
                   <p><i class="far fa-heart"></i> Favorite</p>
+                </div>
+                <div
+                  class="col-md-4 text-danger favorited"
+                  style="display: none;"
+                >
+                  <p><i class="fas fa-heart"></i> In favorite</p>
                 </div>
               </div>
             </div>
@@ -136,7 +130,35 @@
         </div>
         <!-- Shopping list -->
         <div class="col-md-3 main-item" id="shop-list">
-          <span class="main-item-title">My Shopping List</span>
+          <span class="main-item-title mb-3">My Shopping List</span>
+          <div class="shopping-list">
+            <ul class="lists">
+              <!-- <li>
+                <div class="row d-flex justify-content-between">
+                  <div class="col-md-4">
+                    <div class="input-group mb-2">
+                      <input
+                        type="number"
+                        class="form-control form-control-sm l-amount"
+                        value="1.5"
+                      />
+                      <div class="input-group-prepend">
+                        <div class="input-group-text l-unit">
+                          tbsp
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 l-ingredient">
+                    Freshly picked tomatoes with cool head
+                  </div>
+                  <div class="l-remove text-danger col-md-1">
+                    <i class="fas fa-trash"></i>
+                  </div>
+                </div>
+              </li> -->
+            </ul>
+          </div>
         </div>
       </div>
     </div>

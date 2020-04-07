@@ -49,24 +49,43 @@ body {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.18) !important;
 }
 
-#search {
-  position: absolute;
-  top: 2px;
-  right: 16px;
+#search,
+.btn-add-list {
   padding: 9px 25px;
   border-radius: 40px;
   border: none;
   background: linear-gradient(90deg, #c37373, #9bc5c3);
-  outline: none;
+  outline: none !important;
   color: #222;
   transition: all 0.3s ease-in-out;
+}
+
+#search {
+  position: absolute;
+  top: 2px;
+  right: 16px;
+}
+
+.btn-add-list {
+  display: block;
+  margin: 0 auto 10px auto;
+  padding: 6px 15px;
+}
+
+.btn-add-list .fa-cart-plus {
+  font-size: 19px;
 }
 
 #search:hover {
   transform: scale(1.1);
 }
 
-#search .fa-search {
+.btn-add-list:hover {
+  transform: scaleX(1.03);
+}
+
+#search .fa-search,
+.btn-add-list .fa-cart-plus {
   margin-right: 5px;
 }
 
@@ -318,6 +337,7 @@ hr {
 .ingredients {
   list-style: none;
   column-count: 2;
+  margin-bottom: 3px;
 }
 
 .ingredients li {
@@ -393,4 +413,39 @@ hr {
   border-radius: 2em;
   color: #fff;
   padding: 0 1px 29px 0;
+}
+
+/* Shopping List */
+.shopping-list {
+  padding: 0;
+  font-size: 13.5px;
+  list-style: none;
+}
+
+.shopping-list li {
+  padding: 10px 0 5px 0;
+}
+
+.l-unit {
+  padding: 0 5px !important;
+  font-size: 14px !important;
+}
+
+.l-ingredient {
+  margin-top: -3px;
+}
+
+.l-remove {
+  padding: 5px 0 !important;
+  font-size: 17px;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.shopping-list li:hover {
+  background: #f0efef;
+}
+
+.shopping-list li:hover .l-remove {
+  visibility: visible;
 }

@@ -11,6 +11,7 @@ export const elements = {
 	resultItem: document.querySelector('.results-list .result-item'),
 	resultItemTitle: document.querySelector('.results-list .result-item h6'),
 	recipeDesc: document.querySelector('#desc'),
+	shoppingList: document.querySelector('.shopping-list'),
 };
 
 export const renderLoader = parent => {

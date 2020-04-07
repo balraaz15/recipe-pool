@@ -17,6 +17,8 @@ export const renderResults = (recipes) => {
 	recipes.map(recipe => {
 		recipeItem = document.createElement('li');
 		recipeItem.className = 'result-item';
+		recipeItem.classList.add('animated');
+		recipeItem.classList.add('slideInUp');
 		recipeItem.innerHTML = `
 			<a class="row" href="#${recipe.id}">
 				<div class="col-md-4">
