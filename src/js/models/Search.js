@@ -9,7 +9,7 @@ export default class Search {
 	async getRecipes() {
 		try {
 			console.log('Getting the recipes.');
-			const result = await axios.get(`${corsProxy}https://api.spoonacular.com/recipes/search?apiKey=${apiKey}&query=${this.query}&number=10`);
+			const result = await axios.get(`${corsProxy}https://api.spoonacular.com/recipes/search?apiKey=${apiKey}&query=${this.query}&number=50`);
 			const recipes = result.data.results;
 			// console.log('Recipe extracted: ', recipes);
 			return recipes;

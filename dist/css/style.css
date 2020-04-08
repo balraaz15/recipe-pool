@@ -27,7 +27,7 @@ body {
 
 /* Search Bar stylesheets */
 .search-bar {
-  width: 60vw;
+  width: 60%;
   margin: 0 auto !important;
 }
 
@@ -103,12 +103,14 @@ body {
   color: #23b5ad;
 }
 
-.favorite {
+.favorite,
+.favorited {
   cursor: pointer;
 }
 
 .search-bar [class*="fa-"],
-.favorite {
+.favorite,
+.favorited {
   transition: all 0.3s ease-in-out;
 }
 
@@ -118,6 +120,10 @@ body {
 
 .favorite:hover {
   transform: scale(1.1);
+}
+
+.favorited:hover {
+  transform: scale(0.9);
 }
 
 /* Main body */
@@ -286,6 +292,42 @@ body {
   border-radius: 50%;
 }
 
+.more-results {
+  width: 65%;
+  margin: 0 auto 15px auto;
+}
+
+.next-btn {
+  float: right;
+}
+
+.prev-btn {
+  float: left;
+}
+
+.prev-btn,
+.next-btn {
+  background: #e8e7e7;
+  cursor: pointer;
+  padding: 2px 10px;
+  border-radius: 10px;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  background: #cacaca;
+}
+
+.next-btn [class*="fa-"] {
+  position: relative;
+  left: 55px;
+}
+
+.next-btn span {
+  position: relative;
+  right: 19px;
+}
+
 /* Recipe styles */
 .recipe-img {
   height: 265px;
@@ -448,4 +490,66 @@ hr {
 
 .shopping-list li:hover .l-remove {
   visibility: visible;
+}
+
+/* Favorite list */
+.favorites-list {
+  width: 350px;
+  max-height: 450px;
+  overflow: auto;
+  background: white;
+  position: absolute;
+  z-index: 1000;
+  right: 15%;
+  top: 33%;
+  border-radius: 15px;
+}
+
+.fav-title {
+  background: linear-gradient(90deg, #6c5b7b, #c06c84);
+  display: block;
+  text-align: center;
+  color: #ddd;
+  font-family: cursive;
+  font-size: 17px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 7px 0;
+  border-radius: 10px 10px 0 0;
+}
+
+.fav-list {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.fav-item {
+  padding: 10px 25px 5px 25px;
+}
+
+.fav-item a {
+  color: #333 !important;
+  text-decoration: none !important;
+}
+
+.fav-item:hover {
+  background: #f0efef;
+}
+
+.nofav-msg,
+.fav-msg {
+  display: block;
+  margin: 0px auto;
+  padding: 20px 20px 10px 20px;
+}
+
+.favorites-list,
+.fav-msg,
+.favorited {
+  display: none;
+}
+
+.fav-item img {
+  width: 55px;
 }

@@ -1,10 +1,12 @@
-import Search from '../js/models/Search';
-import Recipe from '../js/models/Recipe';
-import ShoppingList from '../js/models/ShoppingList';
+import Search from './models/Search';
+import Recipe from './models/Recipe';
+import ShoppingList from './models/ShoppingList';
+import Favorite from './models/Favorite';
 import { elements, renderLoader, clearLoader } from './views/base';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as shoppingListView from './views/shoppingListView';
+import * as favoritesView from './views/favoritesView';
 
 /** 
  * Global state of the application
@@ -14,7 +16,9 @@ import * as shoppingListView from './views/shoppingListView';
  * - Liked recipe object
  * - measurement preference
  */
-const state = {};
+const state = {
+	showFavBox: false,
+};
 
 /** 
  * SEARCH CONTROLLER 
@@ -43,6 +47,15 @@ elements.recipeForm.addEventListener('submit', e => {
 	searchController();
 });
 
+elements.searchPages.addEventListener('click', e => {
+	const btn = e.target.closest('.pag-btn');
+	if (btn) {
+		const goToPage = parseInt(btn.dataset.goto, 10);
+		searchView.clearResult();
+		searchView.renderResults(state.recipes, goToPage);
+	}
+});
+
 /** 
  * RECIPE CONTROLLER 
  */
@@ -68,7 +81,9 @@ const recipeController = async () => {
 	console.log(state);
 }
 
-['hashchange', 'load'].forEach(event => window.addEventListener(event, recipeController));
+window.addEventListener('hashchange', recipeController);
+
+// ['hashchange', 'load'].forEach(event => window.addEventListener(event, recipeController));
 
 /**
  * Shopping List controller
@@ -81,9 +96,32 @@ const shoppingListController = () => {
 	});
 }
 
+/**
+ * Favorite Controller
+ */
+const favoriteController = () => {
+	if (!state.favorites) state.favorites = new Favorite();
+	const currentRecipeId = state.recipeData.id;
+	if (!state.favorites.isFavorited(currentRecipeId)) {
+		let recipeImg = state.recipeData.image;
+		recipeImg = recipeImg.split('-')[0] + "-90x90.jpg";
+		const newFav = state.favorites.addFavorite(currentRecipeId, state.recipeData.title, recipeImg);
+		favoritesView.toggleFavIcon('nofav');
+		favoritesView.renderFavorite(newFav);
+		console.log(state.favorites);
+	} else {
+		state.favorites.removeFavorite(currentRecipeId);
+		favoritesView.toggleFavIcon('fav');
+		favoritesView.removeFav(currentRecipeId);
+		console.log(state.favorites);
+	}
+}
+
 elements.recipeDesc.addEventListener('click', e => {
 	if (e.target.matches('.btn-add-list, .btn-add-list *')) {
 		shoppingListController();
+	} else if (e.target.matches('.recipe-fav, .recipe-fav *')) {
+		favoriteController();
 	}
 });
 
@@ -97,6 +135,27 @@ elements.shoppingList.addEventListener('click', e => {
 		const amt = parseFloat(e.target.value, 10);
 		state.list.updateItem(id, amt);
 		console.log(state.list);
+	}
+});
+
+elements.searchBar.addEventListener('click', e => {
+	if (e.target.matches('.favorites, .favorites *')) {
+		if (state.favorites) {
+			document.querySelector('.fav-msg').style.display = 'block';
+			document.querySelector('.nofav-msg').style.display = 'none';
+		} else {
+			document.querySelector('.fav-msg').style.display = 'none';
+			document.querySelector('.nofav-msg').style.display = 'block';
+		}
+		if (state.showFavBox) {
+			elements.favBox.style.display = 'none';
+			state.showFavBox = false;
+			return;
+		} else {
+			elements.favBox.style.display = 'block';
+			state.showFavBox = true;
+			return;
+		}
 	}
 });
 

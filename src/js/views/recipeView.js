@@ -24,7 +24,10 @@ export const renderRecipeDesc = (recipeItem) => {
             </p>
           </div>
           <div class="col-md-4 text-danger favorite">
-            <p><i class="far fa-heart"></i> Favorite</p>
+            <p class="recipe-fav"><i class="far fa-heart"></i> Favorite</p>
+          </div>
+          <div class="col-md-4 text-danger favorited">
+            <p class="recipe-fav"><i class="fas fa-heart"></i> In favorite</p>
           </div>
         </div>
       </div>
